@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts About Crocodiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.2em;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .fact-display {
+                font-size: 1em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fun Facts About Crocodiles</h1>
+        <div id="fact-display" class="fact-display">Click the button to see a fun fact!</div>
+        <button id="new-fact-btn" class="btn">Show Random Fact</button>
+        <button id="share-twitter-btn" class="btn">Share on Twitter</button>
+    </div>
+    <script>
+        const facts = [
+            { "fact": "Crocodiles have been around for about 200 million years, making them one of the oldest living species." },
+            { "fact": "They can hold their breath underwater for up to an hour." },
+            { "fact": "Crocodiles have a powerful bite, with some species having a bite force of over 3,700 pounds per square inch." },
+            { "fact": "They can replace each of their 80 teeth up to 50 times in their lifetime." },
+            { "fact": "Crocodiles have a special valve in their throat called a palatal valve that allows them to open their mouths underwater without drowning." },
+            { "fact": "They are excellent swimmers and can reach speeds of up to 20 miles per hour in the water." },
+            { "fact": "Crocodiles have a four-chambered heart, similar to birds and mammals, which is unique among reptiles." },
+            { "fact": "They use tools, such as sticks, to lure birds during nesting season." },
+            { "fact": "Crocodiles communicate with each other through vocalizations, including growls, hisses, and roars." },
+            { "fact": "They have a lifespan of 70 to 100 years in the wild." }
+        ];
+
+        document.getElementById('new-fact-btn').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.style.opacity = 0;
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex].fact;
+                factDisplay.style.opacity = 1;
+            }, 500);
+        });
+
+        document.getElementById('share-twitter-btn').addEventListener('click', () => {
+            const factText = document.getElementById('fact-display').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factText)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
